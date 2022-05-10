@@ -1,0 +1,19 @@
+{
+  "name": "reve",
+  "version": "1.0.0",
+  "description": "Simple app for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha './specs/**/*.spec.js'",
+    "coverage" : "nyc --reporter=lcov --reporter=text npm run test" 
+  },
+ 
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "nyc": "^15.1.0",
+    "sinon": "^14.0.0"
+  }
+}

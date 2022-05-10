@@ -1,0 +1,7 @@
+{
+    "include": "src",
+    "exclude": "specs",
+    "check-coverage": "True",
+    "lines" : 90
+
+}
