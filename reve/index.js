@@ -2,9 +2,9 @@
     var txt1 =  document.getElementById("txt1");
     var btn1 = document.getElementById('btn1');
     var out1 = document.getElementById('output1'); 
- //console.log(txt1)
 
-var NumToBangla = { 
+
+var NumToWords = { 
     '০': 'শুন্য',
     '১': 'এক',
     '২': 'দুই',
@@ -264,7 +264,7 @@ var DateToWords = {
 '৩১শে':'একত্রিশে'
 }
 
-var UnitsToNum = {
+var SpecialUnitsToNum = {
   '২' : 'এক জোড়া',
   '৪' : 'এক হালি',
   '১২' : 'এক ডজন',
@@ -319,36 +319,64 @@ var AbbreToWords = {
 
 }
 
+var UnitsToWords = {
+
+  'কিমি' : 'কিলোমিটার',
+  'সেঃমিঃ' : 'সেন্টিমিটার',
+  'লি' : 'লিটার',
+  'ডেসি' : 'ডেসিমিটার',
+  'সেঃ' : 'সেকেন্ড',
+  'মিমি' : 'মিলিমিটার',
+  'মি' : 'মিটার',
+  'সেমি' : 'সেন্টিমিটার',
+  'মিঃমিঃ' : 'মিলিমিটার',
+  'ডেঃমিঃ' : 'ডেসিমিটার',
+  'কিঃমিঃ' : 'কিলোমিটার',
+  'কি.মি.' : 'কিলোমিটার',
+  '৷৶' : 'সাত আনা',
+  '৷৵' : 'ছয় আনা',
+  '৷৴' : 'পাঁচ আনা',
+  '৷' : 'চার আনা',
+  '৶' : 'তিন আনা',
+  '৵' : 'দুই আনা',
+  '৴' : 'এক আনা',
+  '৷৷' : 'আট আনা',
+  '৷৷৴' : 'নয় আনা',
+  '৷৷৵' : 'দশ আনা',
+  '৳' : 'টাকা'
+  
+}
+
 
 //console.log(DateToWords[0]);
 
   function word_conversion(z){
 
     if (z.length == 1){
-      return NumToBangla[z];
+      return NumToWords[z];
     }
     else if (z.length == 2){
-      return NumToBangla[z];
+      return NumToWords[z];
     }
     else if(z.length == 3){
-      return (NumToBangla[z[0]] + "শো " + NumToBangla[z.slice(1,)] );
+      return (NumToWords[z[0]] + "শো " + NumToWords[z.slice(1,)] );
       }
     else if(z.length == 4){
-      return (NumToBangla[z[0]] + " হাজার " + NumToBangla[z[1]] + " শো " + NumToBangla[z.slice(2,)]);
+      return (NumToWords[z[0]] + " হাজার " + NumToWords[z[1]] + " শো " + NumToWords[z.slice(2,)]);
     }
     else if(z.length == 5){
-      return (NumToBangla[z.slice(0,2)] + " হাজার " + NumToBangla[z[2]] + "শো " + NumToBangla[z.slice(3,)]);
+      return (NumToWords[z.slice(0,2)] + " হাজার " + NumToWords[z[2]] + "শো " + NumToWords[z.slice(3,)]);
     }
     else if(z.length == 6){
-      return (NumToBangla[z[0]] + " লক্ষ " + (NumToBangla[z.slice(1,3)])  + " হাজার " + NumToBangla[z[3]] + "শো " + NumToBangla[z.slice(4,)]); 
+      return (NumToWords[z[0]] + " লক্ষ " + (NumToWords[z.slice(1,3)])  + " হাজার " + NumToWords[z[3]] + "শো " + NumToWords[z.slice(4,)]); 
     }
     else if(z.length == 8){
-      return (NumToBangla[z[0]] + " কোটি " + NumToBangla[z.slice(1,3)] + " লক্ষ " + NumToBangla[z.slice(3,5)] + " হাজার " + NumToBangla[z[5]] + " শো " + NumToBangla[z.slice(6,)]);
+      return (NumToWords[z[0]] + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
     }
 
   }
 
-  function Num2Word(){
+  function Num2Words(){
     a = txt1.value;
 
     y = (a.match(/[০-৯]+/g));
@@ -367,7 +395,7 @@ var AbbreToWords = {
   out1.innerHTML = a;      
   } 
 
-  function Ord2Word(){
+  function Ord2Words(){
     a = txt1.value;
 
     y = (a.match(/([০-৯]+(ম|য়|র্থ|ষ্ঠ|তম))+/g));
@@ -399,14 +427,14 @@ var AbbreToWords = {
     out1.innerHTML = a;
   }
 
-  function Unit2Words(){
+  function SpecialUnit2Words(){
     a = txt1.value;
 
     y = a.match(/(২০|৪|২|১২|১\/২|১\/৩|১\/৪|১.৫|২.৫|১.২৫)+/g);
 
     for(var i=0; i<y.length; i++){
       z = y[i];
-      a = a.replace(z, UnitsToNum[z]);
+      a = a.replace(z, SpecialUnitsToNum[z]);
       //console.log(a);
     }
     out1.innerHTML = a; 
@@ -436,8 +464,8 @@ var AbbreToWords = {
 
 } */
 
- function Abbre2Words(){
-    a = txt1.value;
+function Abbre2Words(){
+    a = "ইঞ্জিঃ মোঃ আবুল আইসিডিডিআরবি এবং UNICEF এ কাজ করেছেন। হযরত মু: সাঃ । ডঃ রহিম বাসস এ কাজ করেন। ঢাবি এবং বাউবি দুটি ইউনিভার্সিটি। অবঃ করিমের জমি দং করেছে নিং রাবিল।";
     y = a.split(" ");
 
     var x = [];
@@ -463,4 +491,29 @@ var AbbreToWords = {
     //console.log(a);
 }
 
-btn1.addEventListener('click',Abbre2Words);
+function Units2Words(){
+  a = "রহিম দশ কিমি পাচ সেঃমিঃ পথ হেটেছে দুই লি পানি আনতে। এতে খরচ হয়েছে বিশ ৳ ৷৴ থেকে ৷৷৵ ।";
+  y = a.split(" ");
+  var x = [];
+
+  for(var i = 0; i<y.length; i++){
+    z = y[i];
+
+    if (z in UnitsToWords){
+      x.push(UnitsToWords[z]);
+    }else{
+      x.push(z);
+    }
+    console.log(x);
+  }
+
+  x = x.join(" ");
+
+  out1.innerHTML = x; 
+
+  //console.log(typeof(x)); 
+
+}
+
+
+btn1.addEventListener('click', Units2Words);
