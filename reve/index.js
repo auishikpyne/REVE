@@ -359,17 +359,109 @@ var UnitsToWords = {
       return NumToWords[z];
     }
     else if(z.length == 3){
-      return (NumToWords[z[0]] + "শো " + NumToWords[z.slice(1,)] );
+      if(z[1] == '০' && z[2] == '০'){
+        return (NumToWords[z[0]] + "শো");
+      }else{
+      return (NumToWords[z[0]] + "শো " + NumToWords[z.slice(1,)]);
       }
+    }
     else if(z.length == 4){
-      return (NumToWords[z[0]] + " হাজার " + NumToWords[z[1]] + " শো " + NumToWords[z.slice(2,)]);
+
+      if(z[1] == '০' && z[2] == '০' && z[3] == '০'){
+        return (NumToWords[z[0]] + " হাজার");
+      }
+      else if(z[2] == '০' && z[3] == '০'){
+        return (NumToWords[z[0]] + " হাজার " + NumToWords[z[1]] + " শো ");
+      }
+      else if(z[1] == '০'){
+        return (NumToWords[z[0]] + " হাজার " + NumToWords[z.slice(2,)]);
+      }
+      else{
+        return (NumToWords[z[0]] + " হাজার " + NumToWords[z[1]] + " শো " + NumToWords[z.slice(2,)]);
+      }
     }
     else if(z.length == 5){
+      if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " হাজার");
+      }
+      else if(z[2] == '০' && z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " হাজার");
+      }
+      else if(z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " হাজার " + NumToWords[z[2]] + "শো");
+      }
+      else if(z[2] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " হাজার " + NumToWords[z.slice(3,)]);
+      }
+      else{
       return (NumToWords[z.slice(0,2)] + " হাজার " + NumToWords[z[2]] + "শো " + NumToWords[z.slice(3,)]);
+      }
     }
+
     else if(z.length == 6){
+      if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ");
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[4] == '০' && z[5] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ" +  NumToWords[z[3]] + " শো " ) ;
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[3] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ " +  NumToWords[z.slice(4,)]) ;
+      }
+      else if(z[1] == '০' && z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ " + (NumToWords[z.slice(1,3)])  + " হাজার " + NumToWords[z.slice(4,)]) ;
+      }
+      else if(z[1] == '০' && z[2] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ " + NumToWords[z[3]] + " শো " + NumToWords[z.slice(4,)]) ;
+      }
+      else if(z[2] == '০' && z[3] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ " + (NumToWords[z.slice(1,3)])  + " হাজার " + NumToWords[z.slice(4,)]) ;
+      }
+      else if(z[1] == '০' && z[2] == '০'){
+        return ((NumToWords[z[0]])  + " লক্ষ " + NumToWords[z.slice(4,)]) ;
+      }
+      else{
       return (NumToWords[z[0]] + " লক্ষ " + (NumToWords[z.slice(1,3)])  + " হাজার " + NumToWords[z[3]] + "শো " + NumToWords[z.slice(4,)]); 
+      }
     }
+
+    else if(z.length == 7){
+      if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ");
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + NumToWords[z.slice(5,)]);
+      }
+      else if (z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০'){
+        return (NumToWords[z.slice(0,2)] + " লক্ষ " + NumToWords[z.slice(5,)]); 
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[3] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + NumToWords[z[4]] + "শো "  + NumToWords[z.slice(5,)]) ;
+      }
+      else if(z[2] == '০' && z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + NumToWords[z.slice(5,)]) ;      
+      }
+      else if(z[2] == '০' && z[4] == '০' && z[5] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z.slice(5,)]) ;  
+      }
+      else if(z[2] == '০' && z[3] == '০' && z[5] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + NumToWords[z[4]] + "শো " + NumToWords[z.slice(5,)]) ;  
+      }
+      else if(z[2] == '০' && z[4] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z.slice(5,)]) ;
+      }
+      else if(z[2] == '০' && z[3] == '০'){
+        return ((NumToWords[z.slice(0,2)])  + " লক্ষ " + NumToWords[z[4]] + "শো " + NumToWords[z.slice(5,)]) ;
+      }
+      else if(z[4] == '০'){
+        return (NumToWords[z.slice(0,2)] + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z.slice(5,)]); 
+      }      
+      else{
+      return (NumToWords[z.slice(0,2)] + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z[4]] + "শো " + NumToWords[z.slice(5,)]); 
+      }
+    }
+
+
     else if(z.length == 8){
       return (NumToWords[z[0]] + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
     }
@@ -384,6 +476,7 @@ var UnitsToWords = {
 
     for (var i=0; i<y.length; i++){
       z = y[i];
+      //console.log(z);
       a = a.replace(z, word_conversion(z));
       //console.log(typeof(y));
     /* if(y[i].length == 3){
@@ -465,7 +558,7 @@ var UnitsToWords = {
 } */
 
 function Abbre2Words(){
-    a = "ইঞ্জিঃ মোঃ আবুল আইসিডিডিআরবি এবং UNICEF এ কাজ করেছেন। হযরত মু: সাঃ । ডঃ রহিম বাসস এ কাজ করেন। ঢাবি এবং বাউবি দুটি ইউনিভার্সিটি। অবঃ করিমের জমি দং করেছে নিং রাবিল।";
+    a = "ইঞ্জিঃ মোঃ আবুল আইসিডিডিআরবি এবং UNICEF এ কাজ করেছেন। হযরত মু: সাঃ । ডঃ রহিম বাসস এ কাজ করেন। ঢাবি এবং বাউবি দুটি ইউনিভার্সিটি। অবঃ করিমের জমি দং করেছে নিং রাবিল। কিম জং উন নর্থ কোরিয়া থাকে।";
     y = a.split(" ");
 
     var x = [];
@@ -492,7 +585,7 @@ function Abbre2Words(){
 }
 
 function Units2Words(){
-  a = "রহিম দশ কিমি পাচ সেঃমিঃ পথ হেটেছে দুই লি পানি আনতে। এতে খরচ হয়েছে বিশ ৳ ৷৴ থেকে ৷৷৵ ।";
+  a = "রহিম দশ কিমি পাচ সেঃমিঃ পথ হেটেছে দুই লি পানি আনতে। এতে খরচ হয়েছে বিশ ৳ ৷৴ থেকে ৷৷৵ । সেঃমিঃ থেকে মিমি ও ডেঃমিঃ তে প্রকাশ।";
   y = a.split(" ");
   var x = [];
 
@@ -516,4 +609,4 @@ function Units2Words(){
 }
 
 
-btn1.addEventListener('click', Units2Words);
+btn1.addEventListener('click', Num2Words);
