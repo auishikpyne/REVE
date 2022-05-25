@@ -394,7 +394,7 @@ var UnitsToWords = {
         return ((NumToWords[z.slice(0,2)])  + " হাজার " + NumToWords[z.slice(3,)]);
       }
       else{
-      return (NumToWords[z.slice(0,2)] + " হাজার " + NumToWords[z[2]] + "শো " + NumToWords[z.slice(3,)]);
+        return (NumToWords[z.slice(0,2)] + " হাজার " + NumToWords[z[2]] + "শো " + NumToWords[z.slice(3,)]);
       }
     }
 
@@ -426,6 +426,7 @@ var UnitsToWords = {
     }
 
     else if(z.length == 7){
+
       if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০'){
         return ((NumToWords[z.slice(0,2)])  + " লক্ষ");
       }
@@ -455,17 +456,57 @@ var UnitsToWords = {
       }
       else if(z[4] == '০'){
         return (NumToWords[z.slice(0,2)] + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z.slice(5,)]); 
-      }      
+      }  
+
       else{
-      return (NumToWords[z.slice(0,2)] + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z[4]] + "শো " + NumToWords[z.slice(5,)]); 
+        return (NumToWords[z.slice(0,2)] + " লক্ষ " + (NumToWords[z.slice(2,4)])  + " হাজার " + NumToWords[z[4]] + "শো " + NumToWords[z.slice(5,)]); 
       }
     }
 
 
     else if(z.length == 8){
-      return (NumToWords[z[0]] + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
-    }
 
+      if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি");
+      }
+      else if(z[2] == '০' && z[3] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " );
+      }
+      else if(z[3] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " );
+      }
+      else if(z[4] == '০' && z[5] == '০' && z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " );
+      }
+      else if(z[5] == '০' && z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " );
+      }
+      else if(z[6] == '০' && z[7] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " );
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[3] == '০' &&  z[4] == '০' && z[5] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(6,)]);
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
+      }
+      else if(z[1] == '০' && z[2] == '০' && z[4] == '০' && z[5] == '০' && z[6] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z.slice(6,)]);
+      }
+      else if(z[1] == '০' && z[2] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
+      }
+      else if(z[3] == '০' && z[4] == '০'){
+        return ((NumToWords[z[0]])  + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
+      }
+      else if(z[5] == '০'){
+        return (NumToWords[z[0]] + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z.slice(6,)]);
+      }
+      
+      else{
+      return (NumToWords[z[0]] + " কোটি " + NumToWords[z.slice(1,3)] + " লক্ষ " + NumToWords[z.slice(3,5)] + " হাজার " + NumToWords[z[5]] + " শো " + NumToWords[z.slice(6,)]);
+      }
+    }
   }
 
   function Num2Words(){
@@ -495,7 +536,7 @@ var UnitsToWords = {
     console.log(y);
 
     for (var i=0; i<y.length; i++){
-      z = y[i];
+      z = y[i]; 
       a = a.replace(z, OrdinalToWords[z]);
       //console.log(a);
     /* if(y[i].length == 3){
