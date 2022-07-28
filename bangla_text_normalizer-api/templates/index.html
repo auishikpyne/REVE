@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Normalization</title>
+</head>
+<body>
+
+    <div class="div1">
+        <h3><center>Bangla Text Normalization</center></h3>
+        <div class="div2" style="margin-left: 400px;">
+            <form action = "http://localhost:5000/" method="POST" id = "form" >   
+                <p>Write Something:</p>
+                <br>
+                <textarea name="text" id="txt1" cols="110" rows="15">
+                
+                </textarea>
+                <br>
+                <br>
+                <input type="submit" class="button" value="Submit" style="background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                margin-left: 400px;">
+
+                <br>
+                <p class="output" id="output1" style="border: 1px solid black;margin-right: 100 px;padding:30px;width: 850px;height: 250px; overflow:scroll;">{{text}} </p>
+                
+            </form>
+        </div>
+        
+    </div>
+    
+
+
+    <script>
+
+
+        // document.getElementById("form").addEventListener("action", function(action){
+
+        //     console.log("Function is working");
+        //     event.preventDefault();
+        // });
+
+
+
+        function myfunc(){
+
+            console.log("hello");
+
+            
+            document.getElementById("form").action = "http://localhost:5000/";
+            document.getElementById("form").method = "POST";
+
+            event.preventDefault();
+        }
+        </script>
+
+</body>
+</html>
